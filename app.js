@@ -25,7 +25,7 @@ app.listen(port, function () {
 var alive;
 
 var currentTime = new Date().getHours();
-if (currentTime <= 0 && currentTime >= 6) {
+if (currentTime >= 6) {
     alive = setInterval(function() {
         http.get("http://slackbot-cooper.herokuapp.com/");
     }, 300000);
