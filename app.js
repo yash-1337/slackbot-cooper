@@ -22,6 +22,17 @@ app.listen(port, function () {
 
 });
 
+var alive;
+
+var currentTime = new Date().getHours();
+if (currentTime <= 0 && currentTime >= 6) {
+    alive = setInterval(function() {
+        http.get("http://slackbot-cooper.herokuapp.com/");
+    }, 300000);
+} else {
+    clearInterval(alive);
+}
+
 var controller = Botkit.slackbot({
     debug: false
 });
