@@ -22,34 +22,6 @@ app.listen(port, function () {
 
 });
 
-var alive;
-
-app.post('/keepalive', function (req, res, next) {
-
-    var http = require("http");
-
-    alive = setInterval(function () {
-        http.get("https://slackbot-cooper.herokuapp.com/keepalive");
-    }, 299990);
-});
-
-app.post('/shutdown', function (req, res, next) {
-
-    var http = require("http");
-    var userName = req.body.user_name;
-    clearInterval(alive);
-
-    var botPayload = {
-        text: "Jarvis will shutdown after a while."
-    };
-
-    if (userName !== 'cooper') {
-        return res.status(200).json(botPayload);
-    } else {
-        return res.status(200).end();
-    }
-});
-
 var controller = Botkit.slackbot({
     debug: false
 });
