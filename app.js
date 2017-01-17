@@ -1,7 +1,7 @@
 var Botkit = require('./node_modules/botkit/lib/Botkit.js');
 
-var cleverbot = require("cleverbot.io"),  
-cleverbot = new cleverbot(process.env.CLEVERBOT_API_USER, process.env.CLEVERBOT_API_TOKEN);  
+var cleverbot = require("cleverbot.io"),
+    cleverbot = new cleverbot(process.env.CLEVERBOT_API_USER, process.env.CLEVERBOT_API_TOKEN);
 cleverbot.setNick("Cooper");
 
 var express = require('express');
@@ -25,11 +25,11 @@ app.listen(port, function () {
 var http = require("http");
 
 var currentTime = new Date().getHours();
-if (currentTime >= 6) {
-    setInterval(function() {
-        http.get("https://slackbot-cooper.herokuapp.com/");
-    }, 300000);
-}
+
+setInterval(function () {
+    http.get("https://slackbot-cooper.herokuapp.com/");
+}, 299990);
+
 
 var controller = Botkit.slackbot({
     debug: false
@@ -43,8 +43,8 @@ controller.spawn({
     }
 });
 
-  
-cleverbot.create(function (err, session) {  
+
+cleverbot.create(function (err, session) {
     if (err) {
         console.log('cleverbot create fail.');
     } else {
@@ -52,7 +52,7 @@ cleverbot.create(function (err, session) {
     }
 });
 
-controller.hears('','direct_message,direct_mention,mention',function(bot,message) {  
+controller.hears('', 'direct_message,direct_mention,mention', function (bot, message) {
     var msg = message.text;
     cleverbot.ask(msg, function (err, response) {
         if (!err) {
