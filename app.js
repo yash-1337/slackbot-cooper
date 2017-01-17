@@ -22,13 +22,13 @@ app.listen(port, function () {
 
 });
 
-var http = require("http");
 
 var currentTime = new Date().getHours();
 
-setInterval(function () {
-    http.get("https://slackbot-cooper.herokuapp.com/");
-}, 299990);
+var http = require("http");
+setInterval(function() {
+    http.get("http://slackbot-cooper.herokuapp.com");
+}, 300000); 
 
 
 var controller = Botkit.slackbot({
