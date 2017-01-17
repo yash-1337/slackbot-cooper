@@ -27,7 +27,7 @@ var http = require("http");
 var currentTime = new Date().getHours();
 if (currentTime >= 6) {
     setInterval(function() {
-        http.get("http://slackbot-cooper.herokuapp.com/");
+        http.get("https://slackbot-cooper.herokuapp.com/");
     }, 300000);
 }
 
