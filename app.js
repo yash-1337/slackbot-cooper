@@ -27,11 +27,10 @@ var currentTime = new Date().getHours();
 
 var http = require("http");
 
-if (currentTime >= 6) {
-    setInterval(function () {
-        http.get("http://slackbot-cooper.herokuapp.com");
-    }, 299990);
-}
+setInterval(function () {
+    http.get("http://slackbot-cooper.herokuapp.com");
+}, 299990);
+
 
 
 
